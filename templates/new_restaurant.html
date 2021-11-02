@@ -1,0 +1,20 @@
+{% extends 'blank.html' %}
+
+{% block content %}
+<form method="post" action="/restaurant/new/">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6 text-right">名稱</div>
+        <div class="col-md-6"><input type="text" name="restaurant_name" required maxlength="20"></div>
+        <div class="col-md-6 text-right">電話</div>
+        <div class="col-md-6"><input type="text" name="restaurant_phone_number" required maxlength="15"></div>
+        <div class="col-md-6 text-right">住址</div>
+        <div class="col-md-6"><input type="text" name="restaurant_address" maxlength="50"></div>
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">儲存</button>
+            <button type="reset" class="btn btn-secondary">清空</button>
+            <a class="btn btn-secondary" href="/restaurants/">取消</a>
+        </div>
+    </div>
+</form>
+{% endblock %}

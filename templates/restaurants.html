@@ -1,0 +1,33 @@
+{% extends 'blank.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 text-right">
+        <a class="btn btn-primary" href="/restaurant/new/">新增</a>
+    </div>
+</div>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th></th>
+            <th>名稱</th>
+            <th>電話</th>
+            <th>住址</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in restaurants %}
+        <tr>
+            <td>
+                <a href="/restaurant/{{ r.id }}/edit/" class="btn btn-primary">編輯</a>
+                <a href="/restaurant/{{ r.id }}/del/" class="btn btn-danger">刪除</a>
+                <a href="/restaurant/{{ r.id }}/foods" class="btn btn-secondary">菜單</a>
+            </td>
+            <td>{{ r.name }}</td>
+            <td>{{ r.phone_number }}</td>
+            <td>{{ r.address }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>菜單</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">        
+    </head>
+    <body>
+        <div class="container">
+            <h2>{{ r.name }}</h2>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>名稱</th>
+                        <th>價格</th>
+                        <th>說明</th>
+                        <th>辣</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for food in r.food_set.all %}
+                    <tr>
+                        <td>{{ food.name }}</td>
+                        <td>{{ food.price }}</td>
+                        <td>{{ food.comment }}</td>
+                        <td>{% if food.is_spicy %}辣{% else %}不辣{% endif %}</td>
+                    </tr>
+                    {% empty %}
+                    <tr colspan="3">
+                        <td>本餐廳啥都沒賣！</td>
+                    </tr>
+                    {% endfor %}                    
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </body>
+</html>

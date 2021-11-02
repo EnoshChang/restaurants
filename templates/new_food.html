@@ -1,0 +1,25 @@
+{% extends 'blank.html' %}
+
+{% block content %}
+<form method="post" action="/restaurant/{{ restaurant_id }}/food/new/">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6 text-right">名稱</div>
+        <div class="col-md-6"><input type="text" name="food_name" required maxlength="20"></div>
+        <div class="col-md-6 text-right">價格</div>
+        <div class="col-md-6"><input type="number" name="food_price" required maxlength="3"></div>
+        <div class="col-md-6 text-right">評語</div>
+        <div class="col-md-6"><input type="text" name="food_comment" maxlength="50"></div>
+        <div class="col-md-6 text-right">辣</div>
+        <div class="col-md-6">
+            <input type="radio" name="food_is_spicy" value="0" checked>不會
+            <input type="radio" name="food_is_spicy" value="1">會
+        </div>
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">儲存</button>
+            <button type="reset" class="btn btn-secondary">清空</button>
+            <a class="btn btn-secondary" href="/restaurant/{{ restaurant_id }}/foods/">取消</a>
+        </div>
+    </div>
+</form>
+{% endblock %}
